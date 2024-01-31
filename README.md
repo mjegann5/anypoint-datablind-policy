@@ -7,7 +7,7 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
 ```
        git clone https://github.com/mjegann5/anypoint-datablind-policy.git
 ```
-2. In pom.xml replace ANYPOINT_ORG_ID by your Anypoint Org Id
+2. In pom.xml replace ANYPOINT_ORG_ID to your Anypoint Org Id
 ```
        <groupId>ANYPOINT_ORG_ID</groupId> => <groupId>5tdfgceb5-fd1f-456d-aaa2-19cdsddcea</groupId>
 ```
