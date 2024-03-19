@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>68a89878-139a-4168-9ca0-8145b0b6feaf</groupId>
+	<groupId>f34d7f48-b78e-433d-bcff-b00402bc04db</groupId>
 	<artifactId>anypoint-datablind-policy</artifactId>
-	<version>1.0.40</version>
+	<version>1.0.41</version>
 
 	<name>anypoint-datablind-policy</name>
 	<description>Allows Sensitive PII data based based on customer's token status</description>
@@ -12,11 +12,12 @@
 	<packaging>mule-policy</packaging>
 
 	<properties>
-		<mule.maven.plugin.version>3.3.6</mule.maven.plugin.version>
-		<exchange.url>https://maven.anypoint.mulesoft.com/api/v1/organizations/68a89878-139a-4168-9ca0-8145b0b6feaf/maven</exchange.url>
+		<mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
+		<mule.deploy.plugin.version>3.1.1</mule.deploy.plugin.version>
+		<exchange.url>https://maven.anypoint.mulesoft.com/api/v1/organizations/${project.groupId}/maven</exchange.url>
 		<http.policy.transform.extension>3.1.0</http.policy.transform.extension>
 		<securePropertyModuleVersion>1.0.2</securePropertyModuleVersion>
-		<datablind.exchange.groupId>68a89878-139a-4168-9ca0-8145b0b6feaf</datablind.exchange.groupId>
+		<datablind.exchange.groupId>${project.groupId}</datablind.exchange.groupId>
 	</properties>
 
 	<dependencies>
@@ -42,9 +43,9 @@
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
-			<groupId>68a89878-139a-4168-9ca0-8145b0b6feaf</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>cwconnector</artifactId>
-			<version>2.0.6</version>
+			<version>2.0.10</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
@@ -64,7 +65,7 @@
 								<dependency>
 									<groupId>io.cipherworks</groupId>
 									<artifactId>cwdatacrypt</artifactId>
-									<version>2.0.0</version>
+									<version>2.0.4</version>
 								</dependency>
 							</additionalDependencies>
 						</plugin>
@@ -75,6 +76,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
+				<!--   <version>${mule.deploy.plugin.version}</version> -->
 				<executions>
 					<execution>
 						<id>upload-template</id>
