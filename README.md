@@ -19,3 +19,6 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
 
        
 ```
+4. Example Policy Configuration
+
+   ![Concept](/assets/DataBlind-Policy.JPG)
