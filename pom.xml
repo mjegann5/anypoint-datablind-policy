@@ -4,7 +4,7 @@
 
 	<groupId>68a89878-139a-4168-9ca0-8145b0b6feaf</groupId>
 	<artifactId>anypoint-datablind-policy</artifactId>
-	<version>1.0.39</version>
+	<version>1.0.40</version>
 
 	<name>anypoint-datablind-policy</name>
 	<description>Allows Sensitive PII data based based on customer's token status</description>
