@@ -19,6 +19,20 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
 
        
 ```
+5. Policy Parameters
+
+| Parameter | #Description  | #Required  | #Example |
+| ------- | --- | --- |
+| Manually Specify Sensitive Fields | Select if you want to manually specify the sensitive fields in the API response | Required  | Click to Select |
+| Sentitive Fields | Sensitive fields in the API response | Required  | #[{    "Title" : "FE:PersonName"  }] |
+| Eligible HTTP Codes | Apply Datablind only when the API response has the following HTTP Codes | Required  | #["200,201,202,205,213"] |
+| Override Token for DataBlind | When a valid override token is provided, Datablind returns the unencrypted and unmasked data | #[attributes.headers['dataBlindToken']] | Required  |
+| Passphrase used when creating the Override Token for DataBlind
+| When a valid override token passphrase is provided, Datablind returns the unencrypted and unmasked data  | Required  | #[attributes.headers['dataBlindPassphrase']] |
+
+
+
+   
 4. Example Policy Configuration
 
    ![Concept](/assets/DataBlind-Policy.JPG)
