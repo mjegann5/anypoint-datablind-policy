@@ -19,7 +19,7 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
 
        
 ```
-5. Policy Parameters
+4. Policy Parameters
 
 | Parameter | Description | Required | Example |
 | --------- | ----------- | -------- | ------- |
@@ -30,6 +30,6 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
 | Passphrase used when creating the Override Token for DataBlind | When a valid override token passphrase is provided, Datablind returns the unencrypted and unmasked data  | Optional  | #[attributes.headers['dataBlindPassphrase']] |
 
    
-4. Example Policy Configuration
+5. Example Policy Configuration
 
    ![Concept](/assets/DataBlind-Policy.JPG)
