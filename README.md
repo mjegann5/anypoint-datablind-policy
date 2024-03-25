@@ -98,7 +98,7 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
    
 | Parameter | Description | Required | Example |
 | --------- | ----------- | -------- | ------- |
-| Datablind Key | Encryption Key used by the DataBlind | Required  | 1234567812345678 |
+| Datablind Key | Encryption Key used by the DataBlind | Required  | #["1234567812345678"] |
 | Manually Specify Sensitive Fields | Select if you want to manually specify the sensitive fields in the API response | Required  | Click to Select |
 | Sentitive Fields | Sensitive fields in the API response | Required  | #[{    "Title" : "FE:PersonName"  }] |
 | Eligible HTTP Codes | Apply Datablind only when the API response has the following HTTP Codes | Required  | #["200,201,202,205,213"] |
