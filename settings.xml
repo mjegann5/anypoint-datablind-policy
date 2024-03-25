@@ -18,7 +18,7 @@
            <password>${anypoint_password}</password>
        </server>
        <server>
-           <id>cwrepo</id>
+           <id>datablindrepo</id>
            <username>${cwrepo_username}</username>
            <password>${cwrepo_password}</password>
        </server>

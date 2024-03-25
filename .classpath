@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="MULE_LIB/f34d7f48-b78e-433d-bcff-b00402bc04db/cwconnector/2.0.10"/>
+	<classpathentry kind="con" path="MULE_LIB/3a209eb5-371f-4b87-aaa2-19c539592cea/cwconnector/2.0.10"/>
 	<classpathentry kind="con" path="MULE_LIB/com.mulesoft.anypoint/mule-http-policy-transform-extension/3.1.0"/>
 	<classpathentry kind="con" path="MULE_LIB/com.mulesoft.modules/mule-secure-configuration-property-module/1.0.2"/>
 	<classpathentry exported="true" kind="con" path="MULE_RUNTIME/org.mule.tooling.server.4.4.0.ee"/>
