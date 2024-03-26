@@ -1,76 +1,11 @@
 # Anypoint Datablind Policy
-Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Manager.
+
+ANypoint Data Blind policy protects sensitive data in API response by encrypting the sensitive fields. Sensitive fields are protected by encryption (AES/FPE) and masking. Users requiring sensitive date is required to provide a valid Override-Tokens provided by DataBlind. Users providing an expired or empty Override-Token will only get the encrypted data.
+
 
 ## API Response
  
  ![Concept](/assets/DataBlind-Data-Sample.jpg)
- 
-```
-{
-	    "legal" : 
- 		[   
- 			{ 
- 			"firstName" : "John",  
- 			"lastName"  : "Doe",
- 			"age"       : 23 
- 			},
-			{
-			"firstName" : "Mary",  
- 			"lastName"  : "Smith",
- 			"age"      : 32 
- 			}
- 		],                           
-	    "marketing": 
-		[ 
-  			{ 
-  			"firstName" : "Sally",
-  			"lastName"  : "Green",
-  			"age"      : 27 
- 			}, 
-  			{ 
-  			"firstName" : "Jim", 
-  			"lastName"  : "Galley",
-  			"age"       : 41 
-  			}
-  		],
-  	    "companyName" : "True Value Corporation",
-  	    "address" : "123 First Street, Newyork, NY, USA",
-  	    "contactNumber" : "123456789"
-}
- ```
-
-## API Response with DataBlind Policy
-```
-{
-    "legal": [
-        {
-            "firstName": "ooQ9OqV3wIZeG+MkEk1KFw==",
-            "lastName": "Ees",
-            "age": "#######################"
-        },
-        {
-            "firstName": "/bbIa8Bzy76zsfqnUKWt7A==",
-            "lastName": "Edmgy",
-            "age": "#######################"
-        }
-    ],
-    "marketing": [
-        {
-            "firstName": "Sally",
-            "lastName": "Green",
-            "age": 27
-        },
-        {
-            "firstName": "Jim",
-            "lastName": "Galley",
-            "age": 41
-        }
-    ],
-    "companyName": "True Value  Corporation",
-    "address": "123 First Street, Newyork, NY, USA",
-    "contactNumber": "128388658"
-}
-```
 
 # How to apply DataBlind to your API
 
