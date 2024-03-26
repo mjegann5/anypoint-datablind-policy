@@ -1,8 +1,10 @@
-# anypoint-datablind-policy
+# Anypoint Datablind Policy
 Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Manager.
 
-## API Response without DataBlind Policy
-
+## API Response
+ 
+ ![Concept](/assets/DataBlind-Data-Sample.jpg)
+ 
 ```
 {
 	    "legal" : 
@@ -78,15 +80,18 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
    Follow the instructions at https://github.com/mjegann5/anypoint-data-blind-connector
    
 2. Publish Datablind Policy to your exchange
-- 2.1 Clone this repo
+* A. Clone this repo
 ```
        git clone https://github.com/mjegann5/anypoint-datablind-policy.git
 ```
-- 2.2 In pom.xml replace ANYPOINT_ORG_ID by your Anypoint Org Id
+* B. In pom.xml replace ANYPOINT_ORG_ID by your Anypoint Org Id
 ```
        <groupId>ANYPOINT_ORG_ID</groupId> => <groupId>5tdfgceb5-fd1f-456d-aaa2-19cdsddcea</groupId>
 ```
-- 2.3 Run the maven command to deploy datablind policy to your exchange. (anypoint_username and anypoint_password are your anypoint platform credentials. Contact mjegann@kavisoft.net to get a valid cwrepo_password.)
+* C. Run the maven command to deploy datablind policy to your exchange.
+  anypoint_username and anypoint_password are your anypoint platform credentials.
+  muleentrepo_username and muleentrepo_password are the anypoint enterprise repo credentials. Your anypoint platform admin will be able to provide this.
+  Contact mjegann@kavisoft.net to get a valid cwrepo_password.)
 ```
 	mvn deploy -DskipTests -s .\settings.xml -Dmuleentrepo_username="******" -Dmuleentrepo_password="******" -Danypoint_username="******" -Danypoint_password="******" -Dcwrepo_username="Token" -Dcwrepo_password="******************"
 ```
