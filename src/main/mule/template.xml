@@ -28,9 +28,12 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        			<set-variable variableName="payload" value="{{{payload}}}" />
        		{{/if}} 
        		<set-variable variableName="payload" value="#[message.payload]" />
+       		<set-variable variableName="tweak" value="#[message.payload.Id]" />
        		<set-variable variableName="sensitiveFields" value="{{{sensitiveFields}}}" />
        		<set-variable variableName="dataBlindKey" value="{{{dataBlindKey}}}" />
        		<set-variable variableName="eligibleHttpCodes" value="{{{eligibleHttpCodes}}}" />
+       		<set-variable variableName="idField" value="{{{idField}}}" />
+       		<set-variable variableName="filterIds" value="{{{idField}}}" />
        		
        		<logger level="INFO" message="#[vars.payload]" />
        		<logger level="INFO" message="#[message.payload]" />
@@ -48,7 +51,7 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
 <!--  
 					<cw:encrypt-json doc:name="Encrypt json" doc:id="0429ae27-e058-483d-91fa-6ffa6245730e" config-ref="DATA_BLIND_Config" arg1="#[write(vars.sensitiveFields, 'application/json')]" arg2="#[write(message.payload, 'application/json')]" arg3="12345" arg5="#[vars.dataBlindPassphrase]" arg4="#[vars.dataBlindToken]" target="dblindOut" />
 -->
-					<cw:encrypt-json doc:name="Encrypt json" doc:id="641aed56-0056-4a9f-939f-4b66f6474a74" config-ref="DATA_BLIND_Config" sensitiveFields="#[write(vars.sensitiveFields, 'application/json')]" sensitiveJson="#[write(message.payload, 'application/json')]" tweak="12345" passPhrase="#[vars.dataBlindPassphrase]" overRideToken="#[vars.dataBlindToken]" target="dblindOut" />
+					<cw:encrypt-json doc:name="Encrypt json" doc:id="641aed56-0056-4a9f-939f-4b66f6474a74" config-ref="DATA_BLIND_Config" sensitiveFields="#[write(vars.sensitiveFields, 'application/json')]" sensitiveJson="#[write(message.payload, 'application/json')]" tweak="#[vars.tweak]" passPhrase="#[vars.dataBlindPassphrase]" overRideToken="#[vars.dataBlindToken]" target="dblindOut" />
 
 					<logger level="INFO" message="After Encrypt Json" />
 					<logger level="INFO" message="#[vars.dblindOut]" />

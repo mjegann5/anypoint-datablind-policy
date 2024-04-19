@@ -16,6 +16,13 @@ configuration:
      optional: false
      sensitive: true
      allowMultiple: false
+   - propertyName: tweak
+     name: Tweak
+     description: Payload Field to be used as Encryption Tweak
+     type: expression
+     optional: true
+     sensitive: true
+     allowMultiple: false
    - propertyName: sensitiveFieldsSpecified
      name: Manually Specify Sensitive Fields 
      description: If selected, then the sensitiveFields will be specified manually.
