@@ -1,74 +1,11 @@
-# anypoint-datablind-policy
-Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Manager.
+# Anypoint Datablind Policy
 
-## API Response without DataBlind Policy
+ANypoint Data Blind policy protects sensitive data in API response by encrypting the sensitive fields. Sensitive fields are protected by encryption (AES/FPE) and masking. Users requiring sensitive date is required to provide a valid Override-Token provided by DataBlind. Users providing an expired or empty Override-Token will only get the encrypted data.
 
-```
-{
-	    "legal" : 
- 		[   
- 			{ 
- 			"firstName" : "John",  
- 			"lastName"  : "Doe",
- 			"age"       : 23 
- 			},
-			{
-			"firstName" : "Mary",  
- 			"lastName"  : "Smith",
- 			"age"      : 32 
- 			}
- 		],                           
-	    "marketing": 
-		[ 
-  			{ 
-  			"firstName" : "Sally",
-  			"lastName"  : "Green",
-  			"age"      : 27 
- 			}, 
-  			{ 
-  			"firstName" : "Jim", 
-  			"lastName"  : "Galley",
-  			"age"       : 41 
-  			}
-  		],
-  	    "companyName" : "True Value Corporation",
-  	    "address" : "123 First Street, Newyork, NY, USA",
-  	    "contactNumber" : "123456789"
-}
- ```
 
-## API Response with DataBlind Policy
-```
-{
-    "legal": [
-        {
-            "firstName": "ooQ9OqV3wIZeG+MkEk1KFw==",
-            "lastName": "Ees",
-            "age": "#######################"
-        },
-        {
-            "firstName": "/bbIa8Bzy76zsfqnUKWt7A==",
-            "lastName": "Edmgy",
-            "age": "#######################"
-        }
-    ],
-    "marketing": [
-        {
-            "firstName": "Sally",
-            "lastName": "Green",
-            "age": 27
-        },
-        {
-            "firstName": "Jim",
-            "lastName": "Galley",
-            "age": 41
-        }
-    ],
-    "companyName": "True Value  Corporation",
-    "address": "123 First Street, Newyork, NY, USA",
-    "contactNumber": "128388658"
-}
-```
+## API Responses
+ 
+ ![Concept](/assets/DataBlind-Data-Sample.jpg)
 
 # How to apply DataBlind to your API
 
@@ -78,15 +15,18 @@ Artifacts required for using Data Blind as a Gateway Policy in Anypoint API Mana
    Follow the instructions at https://github.com/mjegann5/anypoint-data-blind-connector
    
 2. Publish Datablind Policy to your exchange
-- 2.1 Clone this repo
+* A. Clone this repo
 ```
        git clone https://github.com/mjegann5/anypoint-datablind-policy.git
 ```
-- 2.2 In pom.xml replace ANYPOINT_ORG_ID by your Anypoint Org Id
+* B. In pom.xml replace ANYPOINT_ORG_ID by your Anypoint Org Id
 ```
        <groupId>ANYPOINT_ORG_ID</groupId> => <groupId>5tdfgceb5-fd1f-456d-aaa2-19cdsddcea</groupId>
 ```
-- 2.3 Run the maven command to deploy datablind policy to your exchange. (anypoint_username and anypoint_password are your anypoint platform credentials. Contact mjegann@kavisoft.net to get a valid cwrepo_password.)
+* C. Run the maven command to deploy datablind policy to your exchange.
+  anypoint_username and anypoint_password are your anypoint platform credentials.
+  muleentrepo_username and muleentrepo_password are the anypoint enterprise repo credentials. Your anypoint platform admin will be able to provide this.
+  Contact mjegann@kavisoft.net to get a valid cwrepo_password.)
 ```
 	mvn deploy -DskipTests -s .\settings.xml -Dmuleentrepo_username="******" -Dmuleentrepo_password="******" -Danypoint_username="******" -Danypoint_password="******" -Dcwrepo_username="Token" -Dcwrepo_password="******************"
 ```
