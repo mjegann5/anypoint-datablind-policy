@@ -13,15 +13,17 @@ configuration:
      name: Datablind Key
      description: Encryption Key used by the DataBlind
      type: expression
+     defaultValue: "#['1234567812345678']"
      optional: false
-     sensitive: true
+     sensitive: false
      allowMultiple: false
    - propertyName: tweak
      name: Tweak
      description: Payload Field to be used as Encryption Tweak
      type: expression
-     optional: true
-     sensitive: true
+     defaultValue: "#['messsage.payload.Id']"
+     optional: false
+     sensitive: false
      allowMultiple: false
    - propertyName: sensitiveFieldsSpecified
      name: Manually Specify Sensitive Fields 
@@ -33,6 +35,7 @@ configuration:
      name: Sentitive Fields
      description: Sensitive fields in the API response
      type: expression
+     defaultValue: '#[{ "Name" : "FE:PersonName", "TaxId" : "FE:SSN" }]'
      optional: false
      sensitive: false
      dependsOnKey: sensitiveFieldsSpecified
@@ -42,7 +45,7 @@ configuration:
      name: Eligible HTTP Codes
      description: Apply Datablind only when the API response has the following HTTP Codes 
      type: expression
-     defaultValue: #["200,201,202,205,213"]
+     defaultValue: "#['200,201,202,205,213']"
      optional: false
      sensitive: false
      allowMultiple: false

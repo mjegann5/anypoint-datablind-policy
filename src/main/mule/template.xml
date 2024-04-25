@@ -32,7 +32,7 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        		<set-variable variableName="sensitiveFields" value="{{{sensitiveFields}}}" />
        		<set-variable variableName="dataBlindKey" value="{{{dataBlindKey}}}" />
        		<set-variable variableName="eligibleHttpCodes" value="{{{eligibleHttpCodes}}}" />
-       		<set-variable variableName="idField" value="{{{idField}}}" />
+       		<set-variable variableName="tweak" value="{{{tweak}}}" />
        		<set-variable variableName="filterIds" value="{{{idField}}}" />
        		
        		<logger level="INFO" message="#[vars.payload]" />
@@ -41,6 +41,7 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        		<logger level="INFO" message="#[vars.dataBlindPassphrase]" />
        		<logger level="INFO" message="#[vars.dataBlindToken]" />
        		<logger level="INFO" message="#[vars.dataBlindKey]" />
+       		<logger level="INFO" message="#[vars.tweak]" />
        		<logger level="INFO" message="#[message.attributes.statusCode]" />
        		
 <!--  	  		<cw:override-token-with-new-key doc:name="Override token with new key" doc:id="d53686ec-6dbe-4341-904c-638718bd41b6" arg2="12345" arg0="1234567812345678" arg1="passPhrase" target="dblindTokenOut"/>	   
