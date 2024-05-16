@@ -4,7 +4,7 @@
 
 	<groupId>6669a59c-ca91-4c52-aa65-c4b31279544a</groupId>
 	<artifactId>anypoint-datablind-policy</artifactId>
-	<version>1.0.47</version>
+	<version>1.0.58</version>
 
 	<name>anypoint-datablind-policy</name>
 	<description>Allows Sensitive PII data based based on customer's token status</description>
@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>cwconnector</artifactId>
-			<version>2.0.10</version>
+			<version>2.0.12</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>

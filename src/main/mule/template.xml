@@ -35,8 +35,10 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        		<set-variable variableName="tweak" value="{{{tweak}}}" />
        		<set-variable variableName="filterIds" value="{{{idField}}}" />
        		
+<!--  
        		<logger level="INFO" message="#[vars.payload]" />
        		<logger level="INFO" message="#[message.payload]" />
+-->
        		<logger level="INFO" message="#[vars.sensitiveFields]" />
        		<logger level="INFO" message="#[vars.dataBlindPassphrase]" />
        		<logger level="INFO" message="#[vars.dataBlindToken]" />
@@ -55,10 +57,22 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
 					<cw:encrypt-json doc:name="Encrypt json" doc:id="641aed56-0056-4a9f-939f-4b66f6474a74" config-ref="DATA_BLIND_Config" sensitiveFields="#[write(vars.sensitiveFields, 'application/json')]" sensitiveJson="#[write(message.payload, 'application/json')]" tweak="#[vars.tweak]" passPhrase="#[vars.dataBlindPassphrase]" overRideToken="#[vars.dataBlindToken]" target="dblindOut" />
 
 					<logger level="INFO" message="After Encrypt Json" />
+<!--					
 					<logger level="INFO" message="#[vars.dblindOut]" />
+-->					
        				<logger level="INFO" message="Datablind Encryption Completed" />
+       			       			
+		           <set-variable value='#[%dw 2.0&#10;output application/json&#10;---&#10;read(vars.dblindOut,"application/json")]' doc:name="Set Variable" doc:id="98fb6712-8f4b-41d2-8ba5-7df3cab536cc" variableName="jsonpayload"/>
+       				<logger level="INFO" message="After Json conversion" />
+<!--       				
+					<logger level="INFO" message="#[vars.jsonpayload]" />
+-->					       				
 					<http-transform:set-response statusCode="#[message.attributes.statusCode]">
+					<!--  
 			  	    	<http-transform:body>#[vars.dblindOut]</http-transform:body>
+			  	    -->
+			  	    	<http-transform:body>#[vars.jsonpayload]</http-transform:body>
+			  	    	
 					</http-transform:set-response>
                 </when>
                 <otherwise >

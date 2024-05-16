@@ -15,7 +15,7 @@ configuration:
      type: expression
      defaultValue: "#['1234567812345678']"
      optional: false
-     sensitive: false
+     sensitive: true
      allowMultiple: false
    - propertyName: tweak
      name: Tweak

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="MULE_LIB/6669a59c-ca91-4c52-aa65-c4b31279544a/cwconnector/2.0.10"/>
+	<classpathentry kind="con" path="MULE_LIB/6669a59c-ca91-4c52-aa65-c4b31279544a/cwconnector/2.0.12"/>
 	<classpathentry kind="con" path="MULE_LIB/com.mulesoft.anypoint/mule-http-policy-transform-extension/3.1.0"/>
 	<classpathentry kind="con" path="MULE_LIB/com.mulesoft.modules/mule-secure-configuration-property-module/1.0.2"/>
-	<classpathentry exported="true" kind="con" path="MULE_RUNTIME/org.mule.tooling.server.4.5.ee"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="MULE_RUNTIME/org.mule.tooling.server.4.6.ee"/>
 	<classpathentry kind="src" path="src/main/mule"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
