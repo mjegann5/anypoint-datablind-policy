@@ -24,11 +24,16 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        		<set-variable variableName="dataBlindPassphrase" value="{{{dataBlindPassphrase}}}" />
        		<set-variable variableName="dataBlindToken" value="{{{dataBlindToken}}}" />
             <http-policy:execute-next/>  
+<!--            
        		{{#if payload}}
        			<set-variable variableName="payload" value="{{{payload}}}" />
        		{{/if}} 
-       		<set-variable variableName="payload" value="#[message.payload]" />
-       		<set-variable variableName="tweak" value="#[message.payload.Id]" />
+-->
+       		<set-variable variableName="payload" value="#[message.payload]" />   
+<!--
+         	<set-variable variableName="tweak" value="#[message.payload.Id]" /> 
+       		<logger level="INFO" message="#['message.payload.id ' ++ vars.tweak]" />
+-->
        		<set-variable variableName="sensitiveFields" value="{{{sensitiveFields}}}" />
        		<set-variable variableName="dataBlindKey" value="{{{dataBlindKey}}}" />
        		<set-variable variableName="eligibleHttpCodes" value="{{{eligibleHttpCodes}}}" />
@@ -40,9 +45,11 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        		<logger level="INFO" message="#[message.payload]" />
 -->
        		<logger level="INFO" message="#[vars.sensitiveFields]" />
+<!--
        		<logger level="INFO" message="#[vars.dataBlindPassphrase]" />
        		<logger level="INFO" message="#[vars.dataBlindToken]" />
        		<logger level="INFO" message="#[vars.dataBlindKey]" />
+-->
        		<logger level="INFO" message="#[vars.tweak]" />
        		<logger level="INFO" message="#[message.attributes.statusCode]" />
        		
@@ -51,9 +58,6 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
 -->
             <choice>
                 <when expression="#[(vars.eligibleHttpCodes contains message.attributes.statusCode)]" >                         
-<!--  
-					<cw:encrypt-json doc:name="Encrypt json" doc:id="0429ae27-e058-483d-91fa-6ffa6245730e" config-ref="DATA_BLIND_Config" arg1="#[write(vars.sensitiveFields, 'application/json')]" arg2="#[write(message.payload, 'application/json')]" arg3="12345" arg5="#[vars.dataBlindPassphrase]" arg4="#[vars.dataBlindToken]" target="dblindOut" />
--->
 					<cw:encrypt-json doc:name="Encrypt json" doc:id="641aed56-0056-4a9f-939f-4b66f6474a74" config-ref="DATA_BLIND_Config" sensitiveFields="#[write(vars.sensitiveFields, 'application/json')]" sensitiveJson="#[write(message.payload, 'application/json')]" tweak="#[vars.tweak]" passPhrase="#[vars.dataBlindPassphrase]" overRideToken="#[vars.dataBlindToken]" target="dblindOut" />
 
 					<logger level="INFO" message="After Encrypt Json" />
@@ -68,9 +72,6 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
 					<logger level="INFO" message="#[vars.jsonpayload]" />
 -->					       				
 					<http-transform:set-response statusCode="#[message.attributes.statusCode]">
-					<!--  
-			  	    	<http-transform:body>#[vars.dblindOut]</http-transform:body>
-			  	    -->
 			  	    	<http-transform:body>#[vars.jsonpayload]</http-transform:body>
 			  	    	
 					</http-transform:set-response>
@@ -81,7 +82,9 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
             </choice>
 	 		<error-handler>
 	              <on-error-continue>
-    	             <set-payload value="Error in Policy" />
+	              	<logger level="INFO" message="#['DataBlind Policy Error Message : ' ++ write(error,'application/json')]"/>
+	              
+    	             <set-payload value="Error in DataBlind Policy. Please check the DataBlind Policy configuration" />
         	      </on-error-continue>
 	        </error-handler>
 		 </try>

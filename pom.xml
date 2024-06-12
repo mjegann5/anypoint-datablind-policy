@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>6669a59c-ca91-4c52-aa65-c4b31279544a</groupId>
+	<groupId>2ce5fb85-828a-44ae-8a7c-7768c9f74b65</groupId>
 	<artifactId>anypoint-datablind-policy</artifactId>
-	<version>1.0.58</version>
+	<version>1.0.64</version>
 
 	<name>anypoint-datablind-policy</name>
 	<description>Allows Sensitive PII data based based on customer's token status</description>
@@ -12,7 +12,7 @@
 	<packaging>mule-policy</packaging>
 
 	<properties>
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 		<mule.deploy.plugin.version>3.1.1</mule.deploy.plugin.version>
 		<exchange.url>https://maven.anypoint.mulesoft.com/api/v1/organizations/${project.groupId}/maven</exchange.url>
 		<http.policy.transform.extension>3.1.0</http.policy.transform.extension>
