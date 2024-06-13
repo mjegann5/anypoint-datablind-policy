@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="con" path="MULE_LIB/3a209eb5-371f-4b87-aaa2-19c539592cea/cwconnector/2.0.12"/>
 	<classpathentry kind="con" path="MULE_LIB/com.mulesoft.anypoint/mule-http-policy-transform-extension/3.1.0"/>
 	<classpathentry kind="con" path="MULE_LIB/com.mulesoft.modules/mule-secure-configuration-property-module/1.0.2"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>

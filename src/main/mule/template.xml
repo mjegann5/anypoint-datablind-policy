@@ -21,9 +21,11 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
     <http-policy:proxy name="{{{policyId}}}-custom-policy">
         <http-policy:source>
           <try>
+            <http-policy:execute-next/>  
+            <logger level="INFO" message="DataBlind Policy Begins after execute-next" />
        		<set-variable variableName="dataBlindPassphrase" value="{{{dataBlindPassphrase}}}" />
        		<set-variable variableName="dataBlindToken" value="{{{dataBlindToken}}}" />
-            <http-policy:execute-next/>  
+            
 <!--            
        		{{#if payload}}
        			<set-variable variableName="payload" value="{{{payload}}}" />
@@ -37,8 +39,6 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        		<set-variable variableName="sensitiveFields" value="{{{sensitiveFields}}}" />
        		<set-variable variableName="dataBlindKey" value="{{{dataBlindKey}}}" />
        		<set-variable variableName="eligibleHttpCodes" value="{{{eligibleHttpCodes}}}" />
-       		<set-variable variableName="tweak" value="{{{tweak}}}" />
-       		<set-variable variableName="filterIds" value="{{{idField}}}" />
        		
 <!--  
        		<logger level="INFO" message="#[vars.payload]" />
@@ -50,14 +50,20 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
        		<logger level="INFO" message="#[vars.dataBlindToken]" />
        		<logger level="INFO" message="#[vars.dataBlindKey]" />
 -->
-       		<logger level="INFO" message="#[vars.tweak]" />
        		<logger level="INFO" message="#[message.attributes.statusCode]" />
        		
 <!--  	  		<cw:override-token-with-new-key doc:name="Override token with new key" doc:id="d53686ec-6dbe-4341-904c-638718bd41b6" arg2="12345" arg0="1234567812345678" arg1="passPhrase" target="dblindTokenOut"/>	   
 			<logger level="INFO" message="#[vars.dblindTokenOut]" />
 -->
+            <logger level="INFO" message="DataBlind Policy - Checking statuscode" />
+
             <choice>
-                <when expression="#[(vars.eligibleHttpCodes contains message.attributes.statusCode)]" >                         
+                <when expression="#[(vars.eligibleHttpCodes contains message.attributes.statusCode)]" >   
+                
+                   <set-variable variableName="tweak" value="{{{tweak}}}" />
+       		       <set-variable variableName="filterIds" value="{{{idField}}}" />
+       		       <logger level="INFO" message="#[vars.tweak]" />
+                                          
 					<cw:encrypt-json doc:name="Encrypt json" doc:id="641aed56-0056-4a9f-939f-4b66f6474a74" config-ref="DATA_BLIND_Config" sensitiveFields="#[write(vars.sensitiveFields, 'application/json')]" sensitiveJson="#[write(message.payload, 'application/json')]" tweak="#[vars.tweak]" passPhrase="#[vars.dataBlindPassphrase]" overRideToken="#[vars.dataBlindToken]" target="dblindOut" />
 
 					<logger level="INFO" message="After Encrypt Json" />
@@ -84,7 +90,9 @@ http://www.mulesoft.org/schema/mule/cw http://www.mulesoft.org/schema/mule/cw/cu
 	              <on-error-continue>
 	              	<logger level="INFO" message="#['DataBlind Policy Error Message : ' ++ write(error,'application/json')]"/>
 	              
-    	             <set-payload value="Error in DataBlind Policy. Please check the DataBlind Policy configuration" />
+<!--    	             <set-payload value="Error in DataBlind Policy. Please check the DataBlind Policy configuration" /> -->
+
+
         	      </on-error-continue>
 	        </error-handler>
 		 </try>
